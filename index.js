@@ -34,10 +34,22 @@ class UI {
     row.innerHTML = `
     <td>${book.title} </td>
     <td>${book.author} </td>
-    <td><a href="#">X</a></td>
+    <td><a href="#" class="delete" value="delete">X</a></td>
     `;
 
     list.appendChild(row);
+  }
+
+  static deleteBook(el) {
+    //if(el.value='delete') {
+    if(el.classList.contains('delete')) {
+      el.parentElement.parentElement.remove();
+    }
+  }
+
+  static clearFields() {
+    document.querySelector('#title').value = '';
+    document.querySelector('#author').value = '';
   }
 }
 
@@ -53,13 +65,26 @@ document.querySelector('#add-book').addEventListener('submit', (e) => {
   const book_title = document.querySelector('#title').value;
   const book_author = document.querySelector('#author').value;
 
+  //Validate
+  if(book_title === '' || book_author ===''){
+    UI.showAlert("Please fill all fields!")
+  } else {
+
   //Instantiate book
+
   const book = new Book(book_title, book_author);
+
   //console.log(book);
   UI.addBookToList(book);
 
   //clear fields
-  UI.clearFields()
+  UI.clearFields();
+
+  }
 });
 
 //Event: Remove a book
+
+document.querySelector('.book-list').addEventListener('click', (e) => {
+  UI.deleteBook(e.target);
+});
