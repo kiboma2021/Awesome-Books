@@ -8,22 +8,20 @@
 </head>
 <body>
   <header>
-    <h1>Awesome books</h1>
+    <h1>Awesome Books</h1>
+    <div class="book-list"></div>
   </header>
-  <article>
-    <form action="" method="POST">
-      <label for="title">
-        <input type="text" id="title" placeholder="Title">
-      </label> <br> <br>
-      <label for="author">
-        <input type="text" id="author" placeholder="Author">
-      </label> <br> <br>
-      <button type="submit" value="Add">Add</button>
 
-    </form>
+  <main>
+    <section>
+      <form id="add-book">
+        <label for="title"><input type="text" name="title" id="title"></label> <br><br>
+        <label for="author"><input type="text" name="author" id="author"></label> <br><br>
+        <input type="submit" value="Add">
+      </form>
+    </section>
+  </main>
 
-
-  </article>
-  
+  <script src="index.js"></script>
 </body>
 </html>
